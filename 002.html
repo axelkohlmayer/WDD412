@@ -1,0 +1,122 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    
+    <form action="javascript:void%200" method="get" id="regform">
+        
+
+        <input type="text" name="alter" id="alter">
+
+
+        <input type="submit">
+    </form>
+
+
+    <script>
+        // Formular selektieren
+        var formular = document.getElementById('regform');
+
+        // Element in der Console ausgeben
+        console.log(formular);
+
+        // WEnn Formular abgeschickt wird, function ausführen
+        formular.onsubmit = function() {
+
+            // mit der eigenschaft value kann der Inhalt eines Formularfeldes
+            // ausgelesen werden
+            var alter = document.getElementById('alter').value;
+
+            
+            // alter mit unserer parseSuper2000 auf Int umwandeln
+            alter = parseInt(alter);
+
+            // wenn eingabe kleiner als 18
+            if(alter < 18) {
+                alert('du bist zu jung!');
+                window.location.href = "http://google.at";
+            }
+
+            // wen eingabe gleich 18
+            if(alter == 18 ) {
+                alert('okay, gerade noch');
+            }
+
+            // wenn eingabe größer als 18
+            if(alter > 18) {
+                alert('geht in ordung!');
+            }
+
+            // mit return false wird das absenden des Formulars verhindert
+            return false;
+
+        };
+
+
+
+
+        /**
+         * param value {sting} mixed int/string
+         * return int/null
+         */
+        
+
+        function parseSuper2000(value) {
+
+            // Wenn der Datentyp von value undefined (nichts übergeben)
+            // oder object (z.b. null) ist dann wird die function abgebrochen
+            // und null zurückgegeben
+            if(typeof value === 'undefined' || typeof value === 'object') {
+                return null;
+            }
+
+            // Wenn ein string übergeben wird...
+            if(typeof value === 'string') {
+                // und dieser leer ist -> '' ...
+                if(value.length === 0) {
+                    // function abbrechen und null zurückgeben
+                    return null;
+                }
+            }
+
+            var alter = value,
+                // hier wird der neue string ohne buchstaben zusammengesetzt
+                alterNew = '';
+
+            // durchläuft alle Zeichen
+            for(var i = 0; i < alter.length; i++) {
+
+                // Wenn Zeichen eine Number ist wird dieses alterNew hinzugefügt
+                if(isNaN(alter[i]) === false) {
+                    alterNew += alter[i];
+                }
+
+            }
+
+            // nachdem alle Zeichen abgearbeitet wurden wird alterNew zu Int konvertiert.
+            alter = parseInt(alterNew);
+
+            // wenn alter keine number ist wird null zurückgeworfen
+            if(isNaN(alter) === true) {
+
+                return null;
+            }
+
+            // ergebnis zurückwefen
+            return alter;
+
+        }
+
+        
+
+
+
+        
+
+
+    </script>
+
+</body>
+</html>
