@@ -81,6 +81,7 @@
                 }
             }
 
+
             var alter = value,
                 // hier wird der neue string ohne buchstaben zusammengesetzt
                 alterNew = '';
@@ -109,7 +110,46 @@
 
         }
 
+
         
+
+
+        /**
+         * Scope Tests
+         */
+
+         
+         x = 3;
+        ausgabe = true;
+
+         var test = function () {
+              x = 4;
+
+             var ausgabe = function() {
+
+                   x = 10;
+
+                var superausgabe = function() {
+
+
+                     x = 20;
+                }
+
+                superausgabe()
+            }
+
+
+
+            ausgabe();
+
+        }
+
+        // 3
+
+
+        test();
+
+        // 10
 
 
 
